@@ -10,7 +10,7 @@ import UIKit
 import PopMenu
 
 class RootViewController: UITableViewController {
-
+    
     // Table header titles.
     fileprivate let headers: [String] = [
         "Actions",
@@ -26,7 +26,7 @@ class RootViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
     }
     
     /// Top right bar button tapped.
@@ -43,8 +43,9 @@ class RootViewController: UITableViewController {
         let controller = PopMenuViewController(sourceView: barButtonItem, actions: [
             PopMenuDefaultAction(title: "Click me to", image: #imageLiteral(resourceName: "Plus"), color: .yellow),
             PopMenuDefaultAction(title: "Pop another menu", image: #imageLiteral(resourceName: "Heart"), color: #colorLiteral(red: 0.9816910625, green: 0.5655395389, blue: 0.4352460504, alpha: 1)),
-            PopMenuDefaultAction(title: "Try it out!", image: nil, color: .white)
-        ])
+            PopMenuDefaultAction(title: "Try it out!", image: nil, color: .white),
+            PopMenuDefaultAction(title: "Try it out!",image: #imageLiteral(resourceName: "Heart"), color: #colorLiteral(red: 0.9816910625, green: 0.5655395389, blue: 0.4352460504, alpha: 1), textColor: .yellow)
+            ])
         
         // Customize appearance
         controller.appearance.popMenuFont = UIFont(name: "AvenirNext-DemiBold", size: 16)!
@@ -92,7 +93,7 @@ class RootViewController: UITableViewController {
         NSLayoutConstraint.activate([
             label.leadingAnchor.constraint(equalTo: headerView.leadingAnchor, constant: 12),
             label.centerYAnchor.constraint(equalTo: headerView.centerYAnchor)
-        ])
+            ])
         
         return headerView
     }

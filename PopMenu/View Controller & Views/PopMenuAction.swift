@@ -76,6 +76,8 @@ public class PopMenuDefaultAction: NSObject, PopMenuAction {
     /// Color of action.
     public let color: Color?
     
+    public let txtColor: Color?
+    
     /// Handler of action when selected.
     public let didSelect: PopMenuActionHandler?
     
@@ -87,14 +89,16 @@ public class PopMenuDefaultAction: NSObject, PopMenuAction {
     /// Text color of the label.
     public var tintColor: Color {
         get {
-            return titleLabel.textColor
+            return iconImageView.tintColor
         }
         set {
-            titleLabel.textColor = newValue
+            titleLabel.textColor = txtColor ?? newValue
             iconImageView.tintColor = newValue
             backgroundColor = newValue.blackOrWhiteContrastingColor()
         }
     }
+    
+
     
     /// Font for the label.
     public var font: UIFont {
@@ -157,14 +161,16 @@ public class PopMenuDefaultAction: NSObject, PopMenuAction {
     // MARK: - Initializer
     
     /// Initializer.
-    public init(title: String? = nil, image: UIImage? = nil, color: Color? = nil, didSelect: PopMenuActionHandler? = nil) {
+    public init(title: String? = nil, image: UIImage? = nil, color: Color? = nil, textColor:Color? = nil,didSelect: PopMenuActionHandler? = nil) {
         self.title = title
         self.image = image
+        self.txtColor = textColor
         self.color = color
         self.didSelect = didSelect
         
         view = UIView()
     }
+ 
     
     /// Setup necessary views.
     fileprivate func configureViews() {
